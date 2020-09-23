@@ -6,7 +6,7 @@
 
 class ConstantPoolMethodHandle : public ConstantPoolMember {
 private:
-    uint16_t reference_kind = 0;
+    uint8_t reference_kind = 0;
     uint16_t reference_index = 0;
 public:
     void printState() override;

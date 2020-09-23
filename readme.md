@@ -2,9 +2,19 @@
 -
 **Требования**
  - Компилятор, поддерживающий C++17
- - CMake, версии не менее 3.16
+ - CMake, версии не менее 3.10
  
-Проект был протестирован на Windows10 x86, с компилятором WinGW 5.3
+ **Сборка**
+```
+git clone https://github.com/Eistern/class_parser_cpp.git
+cd class_parser_cpp
+cmake .
+make
+```
+ 
+Проект был протестирован на
+ - Windows10 x86, с компилятором WinGW 5.3
+ - Ubuntu 18 LTS, с компилятором gcc
 
 **Использование**
 -  
