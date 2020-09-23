@@ -9,6 +9,7 @@
 #include "ConstantPoolLong.h"
 #include "ConstantPoolFloat.h"
 #include "ConstantPoolDouble.h"
+#include "ConstantPoolMethodHandle.h"
 
 namespace constant_pool_factory {
     ConstantPoolMember *get(uint8_t tag) {
@@ -33,6 +34,8 @@ namespace constant_pool_factory {
                 return new ConstantPoolFloat();
             case 6:
                 return new ConstantPoolDouble();
+            case 15:
+                return new ConstantPoolMethodHandle();
             default:
                 throw std::exception();
         }
