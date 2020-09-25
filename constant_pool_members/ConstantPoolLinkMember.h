@@ -1,7 +1,6 @@
 #ifndef CLASS_PARSER_CPP_CONSTANTPOOLLINKMEMBER_H
 #define CLASS_PARSER_CPP_CONSTANTPOOLLINKMEMBER_H
 
-#include <cstdint>
 #include "ConstantPoolMember.h"
 
 class ConstantPoolLinkMember : public ConstantPoolMember {
@@ -12,6 +11,8 @@ public:
     explicit ConstantPoolLinkMember(uint8_t tag);
 
     void printState() override;
+
+    void printResolved() override;
 
     void initState(std::ifstream &inputStream) override;
 };

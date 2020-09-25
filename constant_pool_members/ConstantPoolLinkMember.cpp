@@ -25,3 +25,7 @@ void ConstantPoolLinkMember::initState(std::ifstream &inputStream) {
 
 ConstantPoolLinkMember::ConstantPoolLinkMember(uint8_t tag) : tag(tag) {
 }
+
+void ConstantPoolLinkMember::printResolved() {
+    //TODO
+}

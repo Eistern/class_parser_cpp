@@ -9,6 +9,8 @@ class ConstantPoolMember {
 public:
     virtual void printState() = 0;
 
+    virtual void printResolved() = 0;
+
     virtual void initState(std::ifstream &inputStream) = 0;
 };
 

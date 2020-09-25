@@ -9,3 +9,7 @@ void ConstantPoolInteger::initState(std::ifstream &inputStream) {
     inputStream.read(reinterpret_cast<char *>(&this->bytes), sizeof(this->bytes));
     toBigEndian(reinterpret_cast<char *>(&this->bytes), sizeof(this->bytes));
 }
+
+void ConstantPoolInteger::printResolved() {
+
+}

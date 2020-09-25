@@ -34,3 +34,6 @@ void ConstantPoolDouble::initState(std::ifstream &inputStream) {
     inputStream.read(reinterpret_cast<char *>(&this->low_bytes), sizeof(this->low_bytes));
     toBigEndian(reinterpret_cast<char *>(&this->low_bytes), sizeof(this->low_bytes));
 }
+
+void ConstantPoolDouble::printResolved() {
+}

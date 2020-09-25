@@ -33,3 +33,7 @@ void ConstantPoolNameRef::initState(std::ifstream &inputStream) {
 
 ConstantPoolNameRef::ConstantPoolNameRef(uint8_t tag) : tag(tag) {
 }
+
+void ConstantPoolNameRef::printResolved() {
+    //TODO
+}

@@ -11,3 +11,7 @@ void ConstantPoolMethodHandle::initState(std::ifstream &inputStream) {
     inputStream.read(reinterpret_cast<char *>(&this->reference_index), sizeof(this->reference_index));
     toBigEndian(reinterpret_cast<char *>(&this->reference_index), sizeof(this->reference_index));
 }
+
+void ConstantPoolMethodHandle::printResolved() {
+    //TODO
+}

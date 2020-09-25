@@ -17,3 +17,7 @@ void ConstantPoolUtfString::printState() {
 ConstantPoolUtfString::~ConstantPoolUtfString() {
     delete[] this->data;
 }
+
+void ConstantPoolUtfString::printResolved() {
+    std::cout << std::string(reinterpret_cast<char *>(this->data), this->length);
+}

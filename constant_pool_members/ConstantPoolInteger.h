@@ -9,6 +9,8 @@ private:
 public:
     void printState() override;
 
+    void printResolved() override;
+
     void initState(std::ifstream &inputStream) override;
 };
 
