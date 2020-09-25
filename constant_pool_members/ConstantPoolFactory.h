@@ -12,33 +12,44 @@
 #include "ConstantPoolMethodHandle.h"
 
 namespace constant_pool_factory {
-    ConstantPoolMember *get(uint8_t tag) {
+    ConstantPoolMember *get(uint8_t tag, std::map<uint16_t, ConstantPoolMember *> *pool) {
+        ConstantPoolMember *result;
         switch (tag) {
             case 7:
             case 8:
             case 16:
-                return new ConstantPoolLinkMember(tag);
+                result = new ConstantPoolLinkMember(tag);
+                break;
             case 9:
             case 10:
             case 11:
             case 12:
             case 18:
-                return new ConstantPoolNameRef(tag);
+                result = new ConstantPoolNameRef(tag);
+                break;
             case 1:
-                return new ConstantPoolUtfString();
+                result = new ConstantPoolUtfString();
+                break;
             case 3:
-                return new ConstantPoolInteger();
+                result = new ConstantPoolInteger();
+                break;
             case 5:
-                return new ConstantPoolLong();
+                result = new ConstantPoolLong();
+                break;
             case 4:
-                return new ConstantPoolFloat();
+                result = new ConstantPoolFloat();
+                break;
             case 6:
-                return new ConstantPoolDouble();
+                result = new ConstantPoolDouble();
+                break;
             case 15:
-                return new ConstantPoolMethodHandle();
+                result = new ConstantPoolMethodHandle();
+                break;
             default:
                 throw std::exception();
         }
+        result->setOwnerPool(pool);
+        return result;
     }
 }
 

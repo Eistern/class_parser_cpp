@@ -2,7 +2,9 @@
 #include "../endian_fix.h"
 
 void ConstantPoolMethodHandle::printState() {
-    std::cout << "MethodHandle: " << this->reference_kind << ":#" << this->reference_index << std::endl;
+    std::cout << "MethodHandle: " << this->reference_kind << ":#" << this->reference_index << " // ";
+    printResolved();
+    std::cout << std::endl;
 }
 
 void ConstantPoolMethodHandle::initState(std::ifstream &inputStream) {
@@ -13,5 +15,6 @@ void ConstantPoolMethodHandle::initState(std::ifstream &inputStream) {
 }
 
 void ConstantPoolMethodHandle::printResolved() {
-    //TODO
+
+    (*this->owner_pool)[this->reference_index]->printResolved();
 }

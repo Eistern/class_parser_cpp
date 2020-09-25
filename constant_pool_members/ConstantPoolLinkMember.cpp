@@ -15,7 +15,9 @@ void ConstantPoolLinkMember::printState() {
         default:
             throw std::exception();
     }
-    std::cout << ": #" << this->nameIndex << std::endl;
+    std::cout << ": #" << this->nameIndex << " // ";
+    printResolved();
+    std::cout << std::endl;
 }
 
 void ConstantPoolLinkMember::initState(std::ifstream &inputStream) {
@@ -27,5 +29,5 @@ ConstantPoolLinkMember::ConstantPoolLinkMember(uint8_t tag) : tag(tag) {
 }
 
 void ConstantPoolLinkMember::printResolved() {
-    //TODO
+    (*this->owner_pool)[this->nameIndex]->printResolved();
 }

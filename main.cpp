@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 #include "constant_pool_members/ConstantPoolFactory.h"
 #include "endian_fix.h"
 
@@ -34,17 +35,21 @@ int main(int argc, char **argv) {
     input.read(reinterpret_cast<char *>(&constant_pool_size), sizeof(constant_pool_size));
     toBigEndian(reinterpret_cast<char *>(&constant_pool_size), sizeof(constant_pool_size));
 
+    std::map<uint16_t, ConstantPoolMember *> pool;
     uint8_t tag;
     for (int i = 0; i < constant_pool_size - 1; i++) {
         input.read(reinterpret_cast<char *>(&tag), sizeof(tag));
         if (tag == 6 || tag == 5) {
             i++;
         }
-        ConstantPoolMember *member = constant_pool_factory::get(tag);
+        ConstantPoolMember *member = constant_pool_factory::get(tag, &pool);
         member->initState(input);
-        std::cout << i + 1 << " ";
-        member->printState();
-        delete member;
+        pool[i + 1] = member;
+    }
+
+    for (auto &entry : pool) {
+        std::cout << "#" << entry.first << " = ";
+        entry.second->printState();
     }
 
     input.close();

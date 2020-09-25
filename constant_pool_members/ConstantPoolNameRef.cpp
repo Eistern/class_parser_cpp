@@ -21,7 +21,9 @@ void ConstantPoolNameRef::printState() {
         default:
             throw std::exception();
     }
-    std::cout << ": #" << this->classIndex << ".#" << this->nameAndTypeIndex << std::endl;
+    std::cout << ": #" << this->classIndex << ".#" << this->nameAndTypeIndex << " // ";
+    printResolved();
+    std::cout << std::endl;
 }
 
 void ConstantPoolNameRef::initState(std::ifstream &inputStream) {
@@ -35,5 +37,23 @@ ConstantPoolNameRef::ConstantPoolNameRef(uint8_t tag) : tag(tag) {
 }
 
 void ConstantPoolNameRef::printResolved() {
-    //TODO
+    if (this->tag != 18) {
+        (*this->owner_pool)[this->classIndex]->printResolved();
+    } else {
+        std::cout << this->classIndex;
+    }
+    switch (this->tag) {
+        case 9:
+        case 10:
+        case 11:
+            std::cout << ":";
+            break;
+        case 12:
+        case 18:
+            std::cout << ".";
+            break;
+        default:
+            throw std::exception();
+    }
+    (*this->owner_pool)[this->nameAndTypeIndex]->printResolved();
 }
